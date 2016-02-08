@@ -107,3 +107,26 @@ void Graph_CheckNodeRank(int **b)
 {
 
 }
+
+
+#include "Header.h"
+
+
+
+
+int main()
+{
+	int **a = NULL;
+
+	Matrix_ReadSizes();
+
+	//GetLineListInput(a); // PROBLEMA 5.1
+
+	Matrix_GetInput(a); //AM MATRICEA IN a[i][j]
+
+	//PrintMatrix(a); //AFISEZ MATRICEA
+
+	//Graph_CheckNodeRank(a);
+	
+	cin.get();
+}
