@@ -1,20 +1,17 @@
 #include <iostream>
-#include <string>
 
 void backtrack(int p);
 int valid(int p);
 void printstr();
 void initializare();
 
-int n, stop = 90, startsec;
+int n;
 char string[10];
 
 int main()
 {
 	std::cout << "n = ";
 	std::cin >> n;
-
-	int start = 65;
 
 	initializare();
 
@@ -51,7 +48,7 @@ int valid(int p)
 	if (string[p - 1] != '0')
 	{
 		if ((string[p - 1] != string[p]) && (string[p] != string[p + 1]) &&(string [p - 1] != string[p + 1]))
-			return 1;
+			if((int)(string[p]))
 		else
 			return 0;
 	}
