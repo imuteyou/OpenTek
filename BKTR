@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+
+void backtrack(int p);
+int valid(int p);
+void printstr();
+void initializare();
+
+int n, stop = 90, startsec;
+char string[10];
+
+int main()
+{
+	std::cout << "n = ";
+	std::cin >> n;
+
+	int start = 65;
+
+	initializare();
+
+	backtrack(1);
+
+
+	system("pause");
+}
+
+void backtrack(int p)
+{	
+	for (int i = 65; i <= 90; i++)
+	{
+		string[p] = (char)i;
+		if (valid(p))
+		{
+			if (p == n)
+			{
+				printstr();
+			}
+
+			else //(p != n), trec pe pozitia urmatoare
+			{
+				backtrack(p + 1);
+			}
+		}
+
+	}
+	
+}
+
+int valid(int p)
+{
+	if (string[p - 1] != '0')
+	{
+		if ((string[p - 1] != string[p]) && (string[p] != string[p + 1]) &&(string [p - 1] != string[p + 1]))
+			return 1;
+		else
+			return 0;
+	}
+	else
+		return 1;
+}
+
+void printstr()
+{
+	for (int j = 1; j <= n; j++)
+	{
+		std::cout << string[j];
+	}
+
+	std::cout << " ";
+}
+
+void initializare()
+{
+	for (int i = 1; i <= n; i++)
+		string[i] = '0';
+}
