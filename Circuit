@@ -1,0 +1,75 @@
+#include <iostream>
+#include <fstream>
+
+#define SIZE 20
+
+using namespace std;
+
+void parcurgere_DF(int plecare);
+int solutie(int );
+
+ifstream in("intrare.txt");
+
+int n, a[SIZE][SIZE], viz[SIZE], circuit[SIZE];
+int x, y;
+int poz_circuit = 1, circuite = 0;
+
+
+int main()
+{
+    in >> n;
+
+    cout << "Nodul x:";
+   // cin >> x;
+
+    cout << "Nodul y:";
+    //cin >> y;
+
+    for(int i = 1; i <= n; i++)
+    {
+        for(int j = 1; j <= n; j++)
+            {
+                in >> a[i][j];
+                cout << a[i][j] << " ";
+            }
+            cout << endl;
+    }
+
+
+
+   parcurgere_DF(1);
+}
+
+
+void parcurgere_DF(int nod)
+{
+    int j;
+    viz[nod] = 1;
+    circuit[poz_circuit] = nod;
+    poz_circuit ++;
+
+    for(int j1 = 1; j1 <= poz_circuit - 1; j1++)
+    {
+        if(a[nod][circuit[j1]] == 1 && viz[circuit[j1]] == 1)
+        {
+            circuite++;
+
+            for(int j2 = j1; j2 <= poz_circuit - 1; j2++)
+            {
+                cout << endl;
+                cout <<" j1= "<< j1 << " ";
+                cout << circuit[j2] << " ";
+            }
+
+            cout << circuit[j1] << endl;;
+        }
+    }
+
+    for(j = 1; j <= n; j++)
+    {
+        if((a[nod][j] == 1) && (viz[j] == 0))
+        {
+            parcurgere_DF(j);
+        }
+    }
+}
